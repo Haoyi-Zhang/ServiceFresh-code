@@ -1,0 +1,44 @@
+{
+  "interpretation": "The pre-fix interface accepted a valid certificate for another target under the same cut. The repaired interface rejects entity and attribute substitution before candidate reconstruction. This is an API binding repair, not a change to the frontier theorems.",
+  "post_fix_regression": {
+    "correct_cache_identity_at_q5_no_revocation": "copy",
+    "correct_cache_target": {
+      "attribute": "tag",
+      "entity": "e0"
+    },
+    "entity_substitution_error": "certificate.query_target",
+    "entity_substitution_rejected": true,
+    "required_call_inputs": {
+      "expected_attribute": "tag",
+      "expected_entity": "e0"
+    },
+    "same_cut_attribute_variant": {
+      "cut": "intake-cut",
+      "direct_expected_identity": "copy",
+      "direct_substituted_identity": "other",
+      "error": "certificate.query_target",
+      "substitution_rejected": true
+    },
+    "verified_is_frozen_dataclass": true
+  },
+  "pre_fix_observation": {
+    "clock": 5,
+    "cut": "intake-cut",
+    "direct_intended_identity": "copy",
+    "direct_substituted_identity": "outside",
+    "intended_target": {
+      "attribute": "tag",
+      "entity": "e0"
+    },
+    "old_check_accepted_substituted_certificate": true,
+    "old_verified_cache_identity": "outside",
+    "old_verified_has_attribute_field": false,
+    "old_verified_has_entity_field": false,
+    "revoked": [],
+    "substituted_certificate_target": {
+      "attribute": "tag",
+      "entity": "e2"
+    }
+  },
+  "scope": "focused API regression; not part of the frozen 82,644-check campaign"
+}

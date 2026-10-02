@@ -1,0 +1,16 @@
+{
+  "abstract": 768,
+  "checks": 0,
+  "cpu_seconds": 0.141095028,
+  "intake": 1,
+  "invalid_streams": 18,
+  "peak_rss_kib": 104876,
+  "phase": "inputs",
+  "scaling": 12,
+  "status": "passed",
+  "total": 997,
+  "traces": 192,
+  "valid_controls": 6,
+  "wall_seconds": 0.143158406,
+  "worker_count": 1
+}

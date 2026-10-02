@@ -1,0 +1,10 @@
+method,contexts,id_errors,value_errors,unsafe_returns
+direct,4608,0,0,0
+full-compiled,4608,0,0,0
+verified,4608,0,0,0
+expiry-skyline,4608,603,574,0
+top-one,4608,1534,1534,0
+timestamp-only,4608,1751,1618,1751
+no-ancestor-expiry,4608,300,275,300
+no-ancestor-revocation,4608,330,306,330
+no-alias-obligations,4608,1106,1009,1106

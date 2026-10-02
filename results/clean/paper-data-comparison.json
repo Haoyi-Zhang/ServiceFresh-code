@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "files": [
+    {
+      "file": "chain.csv",
+      "exists": true,
+      "identical": true
+    },
+    {
+      "file": "method-errors.csv",
+      "exists": true,
+      "identical": true
+    },
+    {
+      "file": "method-errors.tex",
+      "exists": true,
+      "identical": true
+    },
+    {
+      "file": "private.csv",
+      "exists": true,
+      "identical": true
+    },
+    {
+      "file": "regimes.csv",
+      "exists": true,
+      "identical": true
+    },
+    {
+      "file": "regimes.tex",
+      "exists": true,
+      "identical": true
+    },
+    {
+      "file": "scaling.csv",
+      "exists": true,
+      "identical": true
+    },
+    {
+      "file": "scaling.tex",
+      "exists": true,
+      "identical": true
+    },
+    {
+      "file": "shared.csv",
+      "exists": true,
+      "identical": true
+    }
+  ],
+  "extra": []
+}

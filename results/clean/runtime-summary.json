@@ -1,0 +1,14 @@
+{
+  "checks": 82644,
+  "cpu_seconds": 14.203881768,
+  "environment_file": "environment.json",
+  "peak_rss_kib": 115504,
+  "phase_limits": {
+    "address_space_bytes": 2500000000,
+    "cpu_seconds": 100,
+    "wall_seconds": 120
+  },
+  "runs": 21,
+  "wall_seconds": 14.245799121,
+  "workers": 1
+}

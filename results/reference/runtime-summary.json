@@ -1,0 +1,13 @@
+{
+  "checks": 82644,
+  "cpu_seconds": 11.582585051,
+  "peak_rss_kib": 115120,
+  "phase_limits": {
+    "address_space_bytes": 2500000000,
+    "cpu_seconds": 100,
+    "wall_seconds": 120
+  },
+  "runs": 21,
+  "wall_seconds": 11.617279638,
+  "workers": 1
+}

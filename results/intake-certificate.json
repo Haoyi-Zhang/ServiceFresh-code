@@ -1,0 +1,68 @@
+{
+  "cut": "intake-cut",
+  "q0": 5,
+  "query": {
+    "entity": "e0",
+    "attribute": "tag"
+  },
+  "frontier": [
+    {
+      "id": "copy",
+      "rank": [
+        1,
+        5,
+        "copy"
+      ],
+      "deadline": 12,
+      "support": [
+        "a",
+        "b",
+        "link"
+      ],
+      "path": [
+        "bridge"
+      ]
+    },
+    {
+      "id": "backup",
+      "rank": [
+        1,
+        0,
+        "backup"
+      ],
+      "deadline": 20,
+      "support": [
+        "b"
+      ],
+      "path": []
+    },
+    {
+      "id": "root",
+      "rank": [
+        0,
+        0,
+        "root"
+      ],
+      "deadline": 12,
+      "support": [
+        "a",
+        "link"
+      ],
+      "path": [
+        "bridge"
+      ]
+    }
+  ],
+  "covered": [
+    {
+      "id": "ancient",
+      "by": "backup"
+    }
+  ],
+  "inactive": [
+    {
+      "id": "outside",
+      "reason": "disconnected"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "bootstrap_bytes": 9637,
+  "case": "scale-chain-256",
+  "checker_us": 17069.582,
+  "eligible": 256,
+  "frontier": 4,
+  "frontier_entry_bytes": 433,
+  "full_set_setup_us": 16193.43,
+  "producer_us": 3439.064,
+  "records": 256,
+  "regime": "chain"
+}

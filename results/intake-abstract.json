@@ -1,0 +1,12 @@
+{
+  "two_candidate_worlds": 576,
+  "continuation_contexts": 18432,
+  "assertions": 19590,
+  "essential_candidate_witnesses": 990,
+  "negative_controls_exposed": 2,
+  "worker_count": 1,
+  "cpu_seconds": 0.01960922899999995,
+  "peak_rss_kib": 92464,
+  "status": "passed",
+  "interpretation": "Finite pilot, not a mechanized general proof."
+}

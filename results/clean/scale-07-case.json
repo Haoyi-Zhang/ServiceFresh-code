@@ -1,0 +1,12 @@
+{
+  "bootstrap_bytes": 214137,
+  "case": "scale-private-2000",
+  "checker_us": 539592.413,
+  "eligible": 2000,
+  "frontier": 2000,
+  "frontier_entry_bytes": 214001,
+  "full_set_setup_us": 26008.715,
+  "producer_us": 722084.054,
+  "records": 2000,
+  "regime": "private"
+}

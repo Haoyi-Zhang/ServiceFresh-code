@@ -1,0 +1,67 @@
+case,kind,fault,method,rejected,reason
+fault-00,invalid-stream,missing-parent,producer,1,missing/non-node parent
+fault-00,invalid-stream,missing-parent,checker,1,parent.missing_or_alias:copy
+fault-01,invalid-stream,derivation-cycle,producer,1,derivation cycle
+fault-01,invalid-stream,derivation-cycle,checker,1,parent.cycle:copy
+fault-02,invalid-stream,wrong-derived-value,producer,1,derived value
+fault-02,invalid-stream,wrong-derived-value,checker,1,derive.value:copy
+fault-03,invalid-stream,unauthorized-attribute,producer,1,unauthorized attribute
+fault-03,invalid-stream,unauthorized-attribute,checker,1,node.authorization
+fault-04,invalid-stream,unauthorized-alias,producer,1,unauthorized alias
+fault-04,invalid-stream,unauthorized-alias,checker,1,alias.authorization
+fault-05,invalid-stream,conflicting-replay,producer,1,conflicting replay
+fault-05,invalid-stream,conflicting-replay,checker,1,record.conflicting_replay
+fault-06,invalid-stream,future-upper-time,producer,1,timestamp interval / ttl
+fault-06,invalid-stream,future-upper-time,checker,1,record.clock
+fault-07,invalid-stream,reversed-interval,producer,1,timestamp interval / ttl
+fault-07,invalid-stream,reversed-interval,checker,1,record.clock
+fault-08,invalid-stream,zero-ttl,producer,1,timestamp interval / ttl
+fault-08,invalid-stream,zero-ttl,checker,1,record.clock
+fault-09,invalid-stream,unknown-revocation,producer,1,unknown/excess revocation token
+fault-09,invalid-stream,unknown-revocation,checker,1,revoke.unknown_scope
+fault-10,invalid-stream,alias-cycle,producer,1,alias cycle
+fault-10,invalid-stream,alias-cycle,checker,1,alias.cycle
+fault-11,invalid-stream,duplicate-value,producer,1,value
+fault-11,invalid-stream,duplicate-value,checker,1,node.value
+fault-12,invalid-stream,wrong-rule,producer,1,rule arity
+fault-12,invalid-stream,wrong-rule,checker,1,observe.rule
+fault-13,invalid-stream,alias-as-parent,producer,1,missing/non-node parent
+fault-13,invalid-stream,alias-as-parent,checker,1,parent.missing_or_alias:copy
+fault-14,invalid-stream,unknown-entity,producer,1,unauthorized attribute
+fault-14,invalid-stream,unknown-entity,checker,1,node.authorization
+fault-15,invalid-stream,unknown-top-field,producer,1,top-level fields
+fault-15,invalid-stream,unknown-top-field,checker,1,prefix.fields
+fault-16,invalid-stream,boolean-time,producer,1,timestamp
+fault-16,invalid-stream,boolean-time,checker,1,record.clock
+fault-17,invalid-stream,time-overflow,producer,1,timestamp interval / ttl
+fault-17,invalid-stream,time-overflow,checker,1,record.clock
+control-00,valid-control,permutation,both,0,accepted and replay-equivalent
+control-01,valid-control,observation-replay,both,0,accepted and replay-equivalent
+control-02,valid-control,alias-replay,both,0,accepted and replay-equivalent
+control-03,valid-control,known-revocation,both,0,accepted and replay-equivalent
+control-04,valid-control,irrelevant-revocation,both,0,accepted and replay-equivalent
+control-05,valid-control,new-cut,both,0,accepted and replay-equivalent
+certificate-00,certificate,cut,checker,1,certificate.cut
+certificate-01,certificate,clock,checker,1,certificate.cut
+certificate-02,certificate,deadline,checker,1,frontier.deadline:copy
+certificate-03,certificate,missing-support,checker,1,frontier.support:copy
+certificate-04,certificate,extra-support,checker,1,frontier.support:copy
+certificate-05,certificate,missing-path,checker,1,frontier.path:copy
+certificate-06,certificate,duplicate-path,checker,1,frontier.path:copy
+certificate-07,certificate,priority,checker,1,frontier.rank:copy
+certificate-08,certificate,rank-time,checker,1,frontier.rank:copy
+certificate-09,certificate,rank-identity,checker,1,frontier.rank:copy
+certificate-10,certificate,unknown-identity,checker,1,frontier.identity
+certificate-11,certificate,duplicate-frontier,checker,1,frontier.identity
+certificate-12,certificate,missing-frontier,checker,1,cover.omitted_active_candidate
+certificate-13,certificate,missing-cover,checker,1,cover.omitted_active_candidate
+certificate-14,certificate,self-cover,checker,1,cover.identity
+certificate-15,certificate,false-dominator,checker,1,cover.invalid:ancient
+certificate-16,certificate,inactive-reason,checker,1,inactive.reason
+certificate-17,certificate,missing-inactive,checker,1,inactive.omitted_candidate
+certificate-18,certificate,unknown-inactive,checker,1,inactive.reason
+certificate-19,certificate,extra-field,checker,1,certificate.fields
+guard-cut,cache-guard,cut,checker,1,query.cut: stale verified cache
+guard-past-time,cache-guard,past-time,checker,1,query.clock: outside cut/fixed-width domain
+guard-unknown-scope,cache-guard,unknown-scope,checker,1,query.revoked: unknown policy token
+guard-boolean-time,cache-guard,boolean-time,checker,1,query.clock: outside cut/fixed-width domain

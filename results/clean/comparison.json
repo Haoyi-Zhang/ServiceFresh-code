@@ -1,0 +1,7 @@
+{
+  "exact_case_tables": 18,
+  "exact_discrete_files": 23,
+  "interpretation": "Independent execution of the same supplied code and inputs; not an independent scientific review.",
+  "status": "passed",
+  "timing_equality_required": false
+}

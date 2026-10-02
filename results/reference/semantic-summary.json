@@ -1,0 +1,69 @@
+{
+  "abstract_models": 768,
+  "cache_guard_faults_rejected": 4,
+  "campaign_entries": 997,
+  "certificate_faults_rejected": 20,
+  "checks": 82644,
+  "full_event_stream_cases": 229,
+  "invalid_streams_rejected_by_each": 18,
+  "methods": {
+    "direct": {
+      "contexts": 4608,
+      "id_errors": 0,
+      "unsafe_returns": 0,
+      "value_errors": 0
+    },
+    "expiry-skyline": {
+      "contexts": 4608,
+      "id_errors": 603,
+      "unsafe_returns": 0,
+      "value_errors": 574
+    },
+    "full-compiled": {
+      "contexts": 4608,
+      "id_errors": 0,
+      "unsafe_returns": 0,
+      "value_errors": 0
+    },
+    "no-alias-obligations": {
+      "contexts": 4608,
+      "id_errors": 1106,
+      "unsafe_returns": 1106,
+      "value_errors": 1009
+    },
+    "no-ancestor-expiry": {
+      "contexts": 4608,
+      "id_errors": 300,
+      "unsafe_returns": 300,
+      "value_errors": 275
+    },
+    "no-ancestor-revocation": {
+      "contexts": 4608,
+      "id_errors": 330,
+      "unsafe_returns": 330,
+      "value_errors": 306
+    },
+    "timestamp-only": {
+      "contexts": 4608,
+      "id_errors": 1751,
+      "unsafe_returns": 1751,
+      "value_errors": 1618
+    },
+    "top-one": {
+      "contexts": 4608,
+      "id_errors": 1534,
+      "unsafe_returns": 0,
+      "value_errors": 1534
+    },
+    "verified": {
+      "contexts": 4608,
+      "id_errors": 0,
+      "unsafe_returns": 0,
+      "value_errors": 0
+    }
+  },
+  "scaling_contexts": 192,
+  "tiny_contexts": 21504,
+  "trace_contexts": 4608,
+  "valid_controls_accepted": 6
+}

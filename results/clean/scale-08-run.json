@@ -1,0 +1,47 @@
+{
+  "cases": 1,
+  "checks": 68,
+  "contexts": 16,
+  "cpu_seconds": 0.172432995,
+  "environment": {
+    "affinity": {
+      "after": [
+        0
+      ],
+      "before": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "selected": 0,
+      "supported": true
+    },
+    "cpu": {
+      "architecture": "x86_64",
+      "logical_count_visible_before_affinity": 5,
+      "model": "INTEL(R) XEON(R) PLATINUM 8573C"
+    },
+    "os": {
+      "distribution": "Debian GNU/Linux 13 (trixie)",
+      "execution_image": "not exposed to process",
+      "release": "6.18.44",
+      "system": "Linux",
+      "version": "#1 SMP Tue Sep 22 17:26:16 UTC 2026"
+    },
+    "python": {
+      "executable": "/opt/pyvenv/bin/python",
+      "full_version": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+      "implementation": "CPython",
+      "version": "3.13.5"
+    },
+    "recorded_at_utc": "2026-09-26T02:33:28.809227+00:00"
+  },
+  "peak_rss_kib": 107436,
+  "phase": "scale-08",
+  "status": "passed",
+  "timed_query_calls": 2560,
+  "wall_seconds": 0.173160724,
+  "worker_count": 1
+}

@@ -1,0 +1,13 @@
+{
+  "budget_one_contexts": 11520,
+  "cases": 768,
+  "checks": 70272,
+  "contexts": 21504,
+  "cpu_seconds": 0.093835471,
+  "peak_rss_kib": 95532,
+  "phase": "tiny",
+  "retained_candidates": 1400,
+  "status": "passed",
+  "wall_seconds": 0.097515574,
+  "worker_count": 1
+}

@@ -1,0 +1,23 @@
+# Measurement and failure contract
+
+The inclusion rules were fixed after an abstract pilot and an end-to-end development pilot. All generated regimes and sizes are retained. The scale experiment was repaired to include an encoding-matched full-set cache after noticing a representation confound: comparing a bit-vector baseline with a set-valued checked cache cannot isolate retention. The repaired baseline uses the **same `Verified.query` routine**, with all eligible summaries instead of the frontier. Inputs and hypotheses did not change. The original raw scale timings are not the paper's reference data; the current encoding-matched campaign is retained in `results/reference/`.
+
+## Oracles and fault controls
+
+Tiny worlds enumerate local truth assignments and the maximum eligible rank without invoking the pruning function. The end-to-end direct oracle recomputes local validity, AND dependencies, and active-forest reachability, rather than reusing flattened summaries. The checker is separate code and imports neither the engine nor the frontier helper. This is implementation separation, not independent authorship or verification.
+
+For each trace context, an identity error is a result differing from direct replay. A value error compares actual returned value sets. An unsafe return is a nonempty returned ID that is **not currently eligible** according to direct replay. A missing or lower-ranked but eligible result can be an identity/completeness error without being an unsafe return. Top-one and expiry-skyline use complete liveness predicates; their failures therefore isolate loss of fallback candidates, unlike the predicate-dropping ablations.
+
+The artifact retains 18 invalid streams and six valid controls. Twenty certificate mutations must actually change their input certificate before rejection is tested; four cache guards reject invalid query parameters. A first development mutation aimed at a dominated record did nothing because the chosen ID changed the ordering and no such record was pruned. The fixture was corrected before the frozen campaign; this was a test-effectiveness repair, not suppressed evidence of a checker acceptance.
+
+## Timings and sizes
+
+Scale methods: direct Boolean replay, all compiled bit-vector candidates, the encoding-matched full set cache, and the verified frontier. Each case has exactly one producer-build observation, one checker observation, and one matched full-cache setup observation. Only warm queries are repeated: five batches time eight repeats of 16 contexts (128 calls per method per batch), with rotating method order. Median, minimum, and maximum apply only to the five warm-query batch means. The three bootstrap columns are sample size one per case, not bootstrap medians. These values describe local variability and are not independent workload samples or confidence bounds for Internet deployments. There are 2,560 timed query calls per scale case, separate from the count of logical assertions.
+
+Producer and checker bootstrap are measured separately, as is matched full-cache construction. The source prefix is available in memory; disk, cryptographic validation, network transfer, persistent indexing, and live ingestion are not benchmarked. JSON sizes use deterministic compact serialization and count certificate metadata, not Python heap size. Frontier-entry sizes exclude candidate values, which remain in the verified cache. Bootstrap additionally includes linear coverage and requires the complete independently admitted prefix. Therefore a 94-byte retained-summary list is not a 94-byte complete trust proof or process footprint.
+
+The runner records process CPU, wall time, and peak RSS for each phase. The reference campaign's total is 11.582585051 CPU seconds across 21 phases, with maximum reported peak RSS 115,120 KiB. These are not claims about cumulative development, literature, LaTeX compilation, or every failed startup. The bounded repair and clean runs are separately documented. CPU/RSS counters depend on the Linux measurement interface; absolute timing reproducibility is not promised.
+
+## Interpretation limits
+
+Shared scopes compress strongly; independent private scopes force no candidate compression and incur extra bootstrap work. Long ancestry can dominate the independent checker's cost even when its final frontier is small. The generators discriminate mechanisms, not estimate the prevalence of either policy in production. The source paper motivates temporal entity state but supplies no workload trace consumed here. A clean repeat checks the same supplied implementation against independent formulations of the oracle; it is neither a formal code proof nor an independent research review.

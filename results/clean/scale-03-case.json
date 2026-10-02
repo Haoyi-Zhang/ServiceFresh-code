@@ -1,0 +1,12 @@
+{
+  "bootstrap_bytes": 72192,
+  "case": "scale-shared-2000",
+  "checker_us": 69803.154,
+  "eligible": 2000,
+  "frontier": 1,
+  "frontier_entry_bytes": 94,
+  "full_set_setup_us": 23564.413,
+  "producer_us": 28686.612,
+  "records": 2000,
+  "regime": "shared"
+}

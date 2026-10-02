@@ -1,0 +1,30 @@
+{
+  "affinity": {
+    "inherited_mask": "not recorded",
+    "post_set_mask": "not recorded",
+    "selected_cpu": "not recorded",
+    "source_policy": "each phase calls os.sched_setaffinity(0, {min(os.sched_getaffinity(0))}) when the interface is available"
+  },
+  "cpu": {
+    "architecture": "not recorded",
+    "model": "not recorded",
+    "scientific_intake_entitlement": "four CPU cores"
+  },
+  "limitations": "Current-machine metadata is deliberately not substituted. Absolute reference timings cannot be recreated exactly; only stable semantic outputs can be compared.",
+  "memory": {
+    "scientific_intake_limit": "4 GiB",
+    "swap": "none recorded at intake"
+  },
+  "os": {
+    "execution_image": "not recorded",
+    "family": "Linux (recorded runner family and required interfaces)",
+    "kernel": "not recorded",
+    "release": "not recorded"
+  },
+  "python": {
+    "executable": "not recorded",
+    "implementation": "not recorded",
+    "version": "not recorded"
+  },
+  "record_kind": "retrospective description of the retained reference run; not captured at execution"
+}

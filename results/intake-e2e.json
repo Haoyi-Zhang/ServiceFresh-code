@@ -1,0 +1,36 @@
+{
+  "contexts": 216,
+  "certificate_frontier_count": 3,
+  "covered_count": 1,
+  "negative_certificates_rejected": 6,
+  "rejections": [
+    {
+      "field": "deadline",
+      "reason": "frontier.deadline:copy"
+    },
+    {
+      "field": "support",
+      "reason": "frontier.support:copy"
+    },
+    {
+      "field": "path",
+      "reason": "frontier.path:copy"
+    },
+    {
+      "field": "rank",
+      "reason": "frontier.rank:copy"
+    },
+    {
+      "field": "cut",
+      "reason": "certificate.cut"
+    },
+    {
+      "field": "coverage",
+      "reason": "cover.omitted_active_candidate"
+    }
+  ],
+  "cpu_seconds": 0.0007765620000000917,
+  "peak_rss_kib": 94124,
+  "workers": 1,
+  "status": "passed"
+}

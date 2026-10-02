@@ -1,0 +1,139 @@
+{
+  "cut": "intake-cut",
+  "q0": 5,
+  "policy": {
+    "entities": [
+      "e0",
+      "e1",
+      "e2"
+    ],
+    "attributes": [
+      "tag"
+    ],
+    "sources": {
+      "a": {
+        "priority": 0,
+        "attributes": [
+          "tag"
+        ],
+        "alias": false,
+        "scopes": [
+          "a"
+        ]
+      },
+      "b": {
+        "priority": 1,
+        "attributes": [
+          "tag"
+        ],
+        "alias": false,
+        "scopes": [
+          "b"
+        ]
+      },
+      "link": {
+        "priority": 2,
+        "attributes": [
+          "tag"
+        ],
+        "alias": true,
+        "scopes": [
+          "link"
+        ]
+      }
+    },
+    "node_scopes": false
+  },
+  "events": [
+    {
+      "kind": "observe",
+      "id": "root",
+      "entity": "e1",
+      "attribute": "tag",
+      "value": [
+        1
+      ],
+      "source": "a",
+      "lo": 0,
+      "hi": 0,
+      "ttl": 12,
+      "parents": [],
+      "rule": "leaf"
+    },
+    {
+      "kind": "derive",
+      "id": "copy",
+      "entity": "e1",
+      "attribute": "tag",
+      "value": [
+        1
+      ],
+      "source": "b",
+      "lo": 5,
+      "hi": 5,
+      "ttl": 30,
+      "parents": [
+        "root"
+      ],
+      "rule": "copy"
+    },
+    {
+      "kind": "observe",
+      "id": "backup",
+      "entity": "e0",
+      "attribute": "tag",
+      "value": [
+        1
+      ],
+      "source": "b",
+      "lo": 0,
+      "hi": 0,
+      "ttl": 20,
+      "parents": [],
+      "rule": "leaf"
+    },
+    {
+      "kind": "observe",
+      "id": "ancient",
+      "entity": "e0",
+      "attribute": "tag",
+      "value": [
+        1
+      ],
+      "source": "b",
+      "lo": 0,
+      "hi": 0,
+      "ttl": 10,
+      "parents": [],
+      "rule": "leaf"
+    },
+    {
+      "kind": "alias",
+      "id": "bridge",
+      "source": "link",
+      "lo": 0,
+      "hi": 0,
+      "ttl": 18,
+      "parents": [],
+      "ends": [
+        "e0",
+        "e1"
+      ]
+    },
+    {
+      "kind": "observe",
+      "id": "outside",
+      "entity": "e2",
+      "attribute": "tag",
+      "value": [
+        1
+      ],
+      "source": "a",
+      "lo": 0,
+      "hi": 0,
+      "ttl": 25,
+      "parents": [],
+      "rule": "leaf"
+    }
+  ]
+}
