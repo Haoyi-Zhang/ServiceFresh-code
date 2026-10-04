@@ -51,7 +51,7 @@ All inputs are generated bounded abstractions. Public schemas and literature mot
 
 Timing is descriptive of one execution environment. No claim is made about production throughput, distributed ingestion, persistent storage, network transport, authenticated revocation delivery, hardware acceleration, or workload prevalence. The private-scope negative case is retained because it shows that compression and speedup are not universal.
 
-The Python implementation is not mechanized or independently audited. Producer/checker module separation is useful fault isolation, not independent authorship. Written proofs can contain errors despite passing finite checks, and self-audit is not blind peer review.
+The Python implementation is not formally verified. Producer/checker module separation helps isolate implementation disagreements, but passing finite checks does not establish the general written arguments.
 
 ## Literature and novelty boundary
 
