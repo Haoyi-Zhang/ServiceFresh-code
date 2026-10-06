@@ -23,7 +23,7 @@ The result is conditional on all of the following.
 - Observation intervals and lifetimes are bounded integers, with no arithmetic wraparound.
 - Derivations are conjunctive copy or finite-set union.
 - All aliases in the admitted cut form an undirected forest.
-- Revocation is monotone within the cut; unrestricted or budgeted semantics are selected and bound into the certificate.
+- Revocation is monotone within the cut. The implemented certificate and verified cache cover unrestricted revocation. The budgeted laws and bounded exact helper are separate results; no budgeted certificate or cumulative-consumption guard is implemented.
 - The answer includes candidate identity as well as value.
 - The minimum is over sublists of original candidates, not arbitrary encodings.
 
@@ -59,11 +59,11 @@ Event sourcing, provenance semirings, why/where provenance, antichain absorption
 
 The scoped contribution is the ranked temporal future-winner problem after a fixed admitted cut: inherited expiry, shared revocation authority, immutable identities, the unique minimum exact candidate sublist, the two matching cardinality laws, their no-compression thresholds, and a coverage certificate that checks every retained, covered, or initially inactive candidate against independent evidence. Secure-log and transparency mechanisms answer commitment; provenance and freshness mechanisms answer parts of eligibility; this work addresses answer completeness under future eligibility loss. These layers are complementary rather than substitutes.
 
-The manuscript bibliography is relevance-first and contains 24 checked scholarly references. The calibration record covers 12 full papers from the target journal, five full adjacent-venue papers, and five foundational/influential papers; the last group deliberately overlaps the first two where a paper is both closest and field-defining. This calibration supports proportional positioning, not a claim of exhaustive literature review or guaranteed novelty against every unpublished result.
+The manuscript bibliography contains 24 cited scholarly references. The supplied historical calibration record describes 12 full papers from the target journal, five full adjacent-venue papers, and five foundational/influential papers; the last group deliberately overlaps the first two where a paper is both closest and field-defining. That record is not a new full-text audit of every citation in the current repair. Selected primary-source checks support proportional positioning, not an exhaustive literature review or guaranteed novelty against every unpublished result.
 
 ## External-use holds
 
-No remaining P0/P1 defect is known within the stated internal mathematical, implementation, experiment, documentation, and packaging scope. The following are deliberately outside that completion claim and remain mandatory before external use:
+Before submission or operational use, the following author and policy obligations remain:
 
 1. Both named humans must review the full scientific content, approve authorship and contribution statements, and take responsibility for the work.
 2. The live first-party TDSC author guide, current IEEE template selection, length/counting, supplement, link, anonymity, submission-frequency, authorship, originality, and AI-use rules must be rechecked at the time of submission.
@@ -71,4 +71,4 @@ No remaining P0/P1 defect is known within the stated internal mathematical, impl
 4. A real public artifact URL may be inserted only after upload and only where current venue rules permit it. No placeholder or invented URL is included.
 5. Independent expert review, formal mechanization, production validation, peer acceptance, funding, and collaboration are not claimed.
 
-The project is an internally complete scoped research artifact, not a guarantee of acceptance or permission to submit without those human and policy gates.
+The scoped results do not guarantee acceptance or authorize submission without those human and policy gates.

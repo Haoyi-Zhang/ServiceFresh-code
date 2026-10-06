@@ -75,8 +75,8 @@ def tight_budget_grid(
     """
     if not deadlines:
         raise ValueError("deadlines must be nonempty")
-    if any(type(value) is not int for value in deadlines):
-        raise ValueError("deadlines must contain integers")
+    if any(type(value) is not int or value <= 0 for value in deadlines):
+        raise ValueError("deadlines must contain positive integers (live at q0=0)")
     if len(set(deadlines)) != len(deadlines):
         raise ValueError("deadlines must be distinct")
     if type(token_count) is not int or token_count < 0:
@@ -110,8 +110,8 @@ def _selected_deadline_labels(deadlines: Sequence[int], labels: Sequence[int], c
         return (), 0
     if not deadlines:
         raise ValueError("nonempty candidates require deadlines")
-    if any(type(value) is not int for value in deadlines):
-        raise ValueError("deadlines must contain integers")
+    if any(type(value) is not int or value <= 0 for value in deadlines):
+        raise ValueError("deadlines must contain positive integers (live at q0=0)")
     if len(set(deadlines)) != len(deadlines):
         raise ValueError("deadlines must be distinct")
     if count < len(deadlines):
@@ -198,8 +198,7 @@ def expiry_ladder(count: int, *, first_deadline: int = 1) -> tuple[Candidate, ..
     is empty.
     """
     count = _positive_int(count, "count")
-    if type(first_deadline) is not int:
-        raise ValueError("first_deadline must be an integer")
+    first_deadline = _positive_int(first_deadline, "first_deadline")
     items = []
     for index in range(count):
         deadline = first_deadline + index
@@ -216,8 +215,7 @@ def support_code(count: int, *, deadline: int = 1_000_000) -> tuple[Candidate, .
     a strict superset.  Equal-cardinality distinct supports are incomparable.
     """
     count = _positive_int(count, "count")
-    if type(deadline) is not int:
-        raise ValueError("deadline must be an integer")
+    deadline = _positive_int(deadline, "deadline")
     # The expression documents the claimed token count and avoids log2(1).
     token_count = 0 if count == 1 else ceil(log2(count))
     if count > (1 << token_count):  # defensive; mathematically unreachable
@@ -243,8 +241,8 @@ def tight_summary_grid(
     """
     if not deadlines:
         raise ValueError("deadlines must be nonempty")
-    if any(type(value) is not int for value in deadlines):
-        raise ValueError("deadlines must contain integers")
+    if any(type(value) is not int or value <= 0 for value in deadlines):
+        raise ValueError("deadlines must contain positive integers (live at q0=0)")
     if len(set(deadlines)) != len(deadlines):
         raise ValueError("deadlines must be distinct")
     if type(token_count) is not int or token_count < 0:
@@ -271,8 +269,7 @@ def budget_one_chain(count: int, *, deadline: int = 1_000_000) -> tuple[Candidat
     by the top candidate.
     """
     count = _positive_int(count, "count")
-    if type(deadline) is not int:
-        raise ValueError("deadline must be an integer")
+    deadline = _positive_int(deadline, "deadline")
     if count - 1 > 20:
         raise ValueError("count is limited to 21 by exact budget search")
 

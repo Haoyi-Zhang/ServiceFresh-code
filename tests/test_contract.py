@@ -132,6 +132,15 @@ class Contract(unittest.TestCase):
         self.assertEqual(frontier(()), ())
         self.assertIsNone(query((), 0, 0))
 
+    def test_budget_domain_is_checked_for_empty_and_nonempty_inputs(self):
+        item = Candidate('only', (0, 0, 'only'), 1, 0)
+        for items in ((), (item,)):
+            for budget in (-1, True, 1.5, '1', None):
+                with self.subTest(items=len(items), budget=budget):
+                    with self.assertRaises(ValueError):
+                        budget_frontier(items, budget)
+        self.assertEqual(budget_frontier((), 0), ())
+
     def test_budget_helper_on_included_three_candidate_world(self):
         # A selected, already frozen abstract case; compare exact possible winners.
         cases = [json.loads(x) for x in (ROOT/'inputs/abstract.jsonl').read_text().splitlines()]

@@ -1,0 +1,48 @@
+name: Scientific checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  scientific-checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Prepare raw output directory
+        run: mkdir -p "$RUNNER_TEMP/p101-scientific"
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Run bounded offline scientific gates from the standalone artifact root
+        shell: bash
+        run: |
+          set -euo pipefail
+          ulimit -t 240
+          ulimit -v 2539063
+          cpu=$(python -B -c 'import os; print(min(os.sched_getaffinity(0)))')
+          timeout --signal=TERM --kill-after=10s 240s taskset -c "$cpu" bash -c '
+            set -euo pipefail
+            raw="$RUNNER_TEMP/p101-scientific"
+            python -B .github/scripts/check_repository.py 2>&1 | tee "$raw/material-integrity.log"
+            python -B -m unittest discover -s tests -v 2>&1 | tee "$raw/unit-tests.log"
+            python -B reproduce.py --all --out "$raw/reproduced" --compare results/reference 2>&1 | tee "$raw/reproduce.log"
+            python -B report.py --results results/reference --out "$raw/paper-data" 2>&1 | tee "$raw/report.log"
+            diff -r results/paper-data "$raw/paper-data" 2>&1 | tee "$raw/paper-data-comparison.log"
+          ' 2>&1 | tee "$RUNNER_TEMP/p101-scientific/whole-run.log"
+      - name: Upload raw outputs even after a failed gate
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p101-scientific-raw
+          path: ${{ runner.temp }}/p101-scientific
+          if-no-files-found: warn
+          retention-days: 14

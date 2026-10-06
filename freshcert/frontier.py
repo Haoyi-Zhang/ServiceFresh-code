@@ -62,5 +62,7 @@ def budget_witness(x: Candidate, candidates: Iterable[Candidate], budget: int) -
     return None
 
 def budget_frontier(candidates: Iterable[Candidate], budget: int) -> tuple[Candidate, ...]:
+    if type(budget) is not int or budget < 0:
+        raise ValueError('budget must be a nonnegative integer')
     items = tuple(candidates)
     return tuple(x for x in items if budget_witness(x, items, budget) is not None)

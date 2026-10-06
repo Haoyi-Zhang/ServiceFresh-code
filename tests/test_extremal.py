@@ -91,6 +91,41 @@ class SummaryDiversityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             tight_budget_instance(0, (1,), 0, 0)
 
+    def test_constructor_deadlines_are_live_at_natural_origin(self) -> None:
+        for bad in (0, -1, True, 1.5):
+            constructors = (
+                lambda: expiry_ladder(2, first_deadline=bad),
+                lambda: support_code(2, deadline=bad),
+                lambda: budget_one_chain(2, deadline=bad),
+                lambda: tight_summary_grid((bad, 3), 1),
+                lambda: tight_budget_grid((bad, 3), 1, 1),
+                lambda: tight_summary_instance(2, (bad, 3), 1),
+                lambda: tight_budget_instance(2, (bad, 3), 1, 1),
+            )
+            for index, construct in enumerate(constructors):
+                with self.subTest(deadline=bad, constructor=index):
+                    with self.assertRaises(ValueError):
+                        construct()
+
+    def test_smallest_positive_deadline_has_admissible_witnesses(self) -> None:
+        families = (
+            expiry_ladder(2, first_deadline=1),
+            support_code(2, deadline=1),
+            budget_one_chain(2, deadline=1),
+            tight_summary_grid((1, 3), 1),
+            tight_budget_grid((1, 3), 1, 1),
+            tight_summary_instance(2, (1, 3), 1),
+            tight_budget_instance(2, (1, 3), 1, 1),
+        )
+        for items in families:
+            universe = 0
+            for item in items:
+                universe |= item.support
+            for item in items:
+                self.assertGreaterEqual(item.deadline - 1, 0)
+                self.assertEqual(query(items, item.deadline - 1,
+                                       universe & ~item.support), item.identity)
+
 
 class BudgetContextBoundTests(unittest.TestCase):
     def test_closed_form_values(self) -> None:

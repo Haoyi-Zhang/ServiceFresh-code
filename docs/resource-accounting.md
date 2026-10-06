@@ -18,6 +18,8 @@ The post-repair clean run records its environment in `results/clean/environment.
 
 The post-repair focused regression execution passed 31 tests: 18 interface/contract tests and 13 extremal-construction tests (`results/clean/unit-tests.txt`). These reuse the included input inventory. Tests, timing calls, parsed records, and logical equality assertions are distinct units. Each scaling cut has 2,560 timed query calls; those repetitions are not new cases and are not individually counted as correctness assertions. The full-run logical-obligation counter includes the comparisons actually performed.
 
+That 31-test log is historical. The current suite has 34 tests (19 interface and 15 extremal), adding invalid-budget handling for empty lists and admissible construction-deadline boundaries. It passes in a separate Windows execution using CPython 3.12.14. This check does not rerun the Linux resource instrumentation or replace either campaign's timing/RSS values. The prepared scientific workflow is a future Linux execution gate, not a completed run.
+
 ## Enforced limits and closure
 
 Each scientific phase sets a 2,500,000,000-byte address-space limit, a 100-second CPU limit, a 120-second wall timeout, and one-core affinity. A whole run refuses more than 85,000 logical checks. Both complete executions have 21 phases and passed within these limits; their combined retained process CPU is 25.786466819 seconds. The input inventory is fixed at 997 entries, with at most 2,000 provenance records per included case. Inputs are generated locally, not downloaded datasets; no scholarly PDF is required or redistributed.

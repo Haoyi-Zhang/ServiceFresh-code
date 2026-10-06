@@ -24,6 +24,8 @@ min(M, D * sum(binom(u,k), k=0..min(b,u))).
 
 This bound is also attained. Variable-universe membership is NP-complete; the implementation's exact helper is intentionally bounded to 20 relevant tokens.
 
+The certificate API implements unrestricted revocation only. The budgeted helper does not issue a budget-bound certificate or enforce cumulative consumption. Extremal fixtures use the natural origin `q0=0` and require positive deadlines so their last-live-time witnesses are admissible.
+
 These are minimum **original-candidate sublist** results, not minimum-bit or minimum-circuit results. They do not promise compression. At 2,000 private-scope candidates, every candidate remains necessary and certificate bootstrap costs more than building the matched full cache.
 
 Complete arguments and boundaries are in `docs/semantics-and-proofs.md` and `docs/research-boundaries.md`.
@@ -44,9 +46,11 @@ python reproduce.py --all --out results/reproduced --compare results/reference
 python report.py --results results/reference --out results/paper-data
 ```
 
-The deterministic regression suite has **31 tests**: 18 interface/contract tests and 13 extremal tests. The frozen campaign invokes one sequential child at a time and has **82,644 logical checks across 997 case entries**: 768 abstract models and 229 generated event-stream cases, not 997 Internet workloads. The largest generated case has 2,000 provenance records.
+The current deterministic regression suite has **34 tests**: 19 interface/contract tests and 15 extremal tests. It includes empty-input budget validation and admissible construction-witness boundaries. The retained historical clean log ran the earlier 31-test suite; a separate Windows run of the current suite does not replace the Linux timing campaign. The frozen campaign invokes one sequential child at a time and has **82,644 logical checks across 997 case entries**: 768 abstract models and 229 generated event-stream cases, not 997 Internet workloads. The largest generated case has 2,000 provenance records.
 
 Each scientific phase has a 100-second CPU limit, 120-second wall limit, and 2,500,000,000-byte address-space limit. A complete run refuses more than 85,000 counted obligations. `--compare` requires exact equality of 23 discrete result files and all non-timing fields of 18 case tables; timing values are deliberately not compared bit-for-bit. A mismatch raises an exception and returns nonzero.
+
+The standalone-root workflow `.github/workflows/scientific-checks.yml` runs source integrity, unit tests, the full Linux reproduction/comparison, and exact regeneration of the reference paper data. Its scientific block has a 240-second whole-run wall limit, one-core affinity, a 240-second per-process CPU ceiling, and a roughly 2.6-GB per-process address-space ceiling; the phase guards above remain stricter. Failures remain nonzero, and raw outputs are uploaded even after a failed gate. Preparing this workflow is not evidence that it has executed remotely.
 
 A bounded phase can be resumed into an existing incomplete output directory:
 
@@ -86,7 +90,7 @@ The producer import demonstrates the local toy pipeline; a deployed verifier wou
 - `tests/`: interface, immutability, boundary, and extremal-regression tests.
 - `inputs/`: exact lawful generated inputs and invalid/valid controls.
 - `results/reference/`: retained campaign outcomes.
-- `results/clean/`: clean reproduction evidence for the delivered source.
+- `results/clean/`: historical Linux reproduction evidence, before the current boundary regressions; its timings and 31-test log are preserved.
 - `results/paper-data/`: CSV and TeX derived from raw reference outcomes.
 - `claim_evidence_ledger.csv`: each material claim mapped to proof, code, test, raw result, maturity, and boundary.
 - `external_resources.csv`: scholarly, policy, template, and software sources with acquisition and integration notes.
@@ -104,4 +108,4 @@ The scaling cases include shared scopes, independent private scopes, and conjunc
 
 Original code, generated inputs, and original documentation are provided under the MIT license in `LICENSE`. No third-party paper PDF or scientific implementation is redistributed. The paper package separately retains the upstream publisher typography license.
 
-The scoped mathematics, implementation, finite validation, generated campaign, claim ledger, and clean reproduction are complete as internal research. The work has not undergone independent peer review, formal mechanization, Internet deployment, or acceptance review.
+The written proofs, finite checks, and retained measurements have the scopes stated above. The work has not undergone independent peer review, formal mechanization, Internet deployment, or acceptance review.
