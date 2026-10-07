@@ -265,8 +265,9 @@ def budget_one_chain(count: int, *, deadline: int = 1_000_000) -> tuple[Candidat
     Candidates are ranked from ``chain-000001`` downward.  Candidate ``i`` has
     support ``{t_(i+1), ..., t_count}``; revoking ``t_i`` kills every candidate
     above it while preserving it.  The top candidate wins without revocation.
-    The construction uses ``count - 1`` tokens and no private token is required
-    by the top candidate.
+    The construction uses the ``count - 1`` tokens ``t_2, ..., t_count``;
+    no separate ``t_1`` is introduced.  The top candidate's support contains
+    all of these tokens even though it wins without revocation.
     """
     count = _positive_int(count, "count")
     deadline = _positive_int(deadline, "deadline")
