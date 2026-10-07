@@ -33,6 +33,7 @@ jobs:
             set -euo pipefail
             raw="$RUNNER_TEMP/p101-scientific"
             python -B .github/scripts/check_repository.py 2>&1 | tee "$raw/material-integrity.log"
+            timeout 120s python -B -m unittest discover -s tests -p test_checker_summary_reuse.py -v 2>&1 | tee "$raw/ancestry-regression.log"
             python -B -m unittest discover -s tests -v 2>&1 | tee "$raw/unit-tests.log"
             python -B reproduce.py --all --out "$raw/reproduced" --compare results/reference 2>&1 | tee "$raw/reproduce.log"
             python -B report.py --results results/reference --out "$raw/paper-data" 2>&1 | tee "$raw/report.log"

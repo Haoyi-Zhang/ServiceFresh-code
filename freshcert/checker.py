@@ -167,13 +167,35 @@ class Prefix:
 
     def summaries(self, entity, attribute):
         insist(entity in self.policy['entities'] and attribute in self.policy['attributes'], 'query.domain')
-        # First collect unique forest paths; then walk actual ancestry afresh.
+        # Reconstruct from admitted records, with reductions local to this call.
         routes = {entity: ()}; stack = [entity]
         while stack:
             here = stack.pop()
             for there, edge in self.adj[here]:
                 if there not in routes:
                     routes[there] = routes[here] + (edge,); stack.append(there)
+        ancestry = {}
+        def reduce_ancestry(start):
+            pending = [(start, False)]
+            while pending:
+                current, leaving = pending.pop()
+                if current in ancestry:
+                    continue
+                record = self.records[current]
+                if not leaving:
+                    pending.append((current, True))
+                    pending.extend((parent, False) for parent in record['parents']
+                                   if parent not in ancestry)
+                    continue
+                d = record['lo'] + record['ttl']
+                support = set(self.policy['sources'][record['source']]['scopes'])
+                if self.policy['node_scopes']:
+                    support.add('n:' + current)
+                for parent in record['parents']:
+                    pd, ps = ancestry[parent]
+                    d = min(d, pd); support.update(ps)
+                ancestry[current] = (d, frozenset(support))
+            return ancestry[start]
         active, inactive = {}, {}
         for key, row in self.nodes.items():
             if row['attribute'] != attribute:
@@ -181,18 +203,11 @@ class Prefix:
             if row['entity'] not in routes:
                 inactive[key] = 'disconnected'; continue
             path = routes[row['entity']]
-            closure, todo = set(), [key, *path]
-            while todo:
-                current = todo.pop()
-                if current not in closure:
-                    closure.add(current); todo.extend(self.records[current]['parents'])
-            d, support = 2**32-1, set()
-            for current in closure:
-                record = self.records[current]
-                d = min(d, record['lo'] + record['ttl'])
-                support.update(self.policy['sources'][record['source']]['scopes'])
-                if self.policy['node_scopes']:
-                    support.add('n:' + current)
+            d, own_support = reduce_ancestry(key)
+            support = set(own_support)
+            for edge in path:
+                ed, es = reduce_ancestry(edge)
+                d = min(d, ed); support.update(es)
             if d <= self.q0:
                 inactive[key] = 'expired'
             elif not support.isdisjoint(self.known):
