@@ -58,7 +58,7 @@ class SummaryDiversityTests(unittest.TestCase):
             universe = 0
             for item in items:
                 universe |= item.support
-            expected = 0 if count == 1 else math.ceil(math.log2(count))
+            expected = (count - 1).bit_length()
             self.assertLessEqual(universe.bit_count(), expected)
             self.assertEqual(len(summary_pairs(items)), count)
             self.assertEqual(len(frontier(items)), count)
@@ -90,6 +90,14 @@ class SummaryDiversityTests(unittest.TestCase):
             tight_budget_instance(1, (1, 2), 0, 0)
         with self.assertRaises(ValueError):
             tight_budget_instance(0, (1,), 0, 0)
+
+    def test_support_code_integer_token_transitions(self) -> None:
+        # Small owned fixtures immediately around powers of two.
+        for count, expected in ((1, 0), (2, 1), (3, 2), (4, 2), (5, 3),
+                                (8, 3), (9, 4), (16, 4), (17, 5), (32, 5), (33, 6)):
+            items = support_code(count, deadline=7)
+            self.assertEqual(max(item.support for item in items).bit_length(), expected)
+            self.assertEqual(len(frontier(items)), count)
 
     def test_constructor_deadlines_are_live_at_natural_origin(self) -> None:
         for bad in (0, -1, True, 1.5):

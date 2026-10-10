@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Sequence
 from itertools import combinations, product
-from math import ceil, comb, log2
+from math import comb
 
 from .frontier import Candidate
 
@@ -216,8 +216,8 @@ def support_code(count: int, *, deadline: int = 1_000_000) -> tuple[Candidate, .
     """
     count = _positive_int(count, "count")
     deadline = _positive_int(deadline, "deadline")
-    # The expression documents the claimed token count and avoids log2(1).
-    token_count = 0 if count == 1 else ceil(log2(count))
+    # Exact ceil(log2(count)), including count=1, without floating rounding.
+    token_count = (count - 1).bit_length()
     if count > (1 << token_count):  # defensive; mathematically unreachable
         raise AssertionError("insufficient support-code universe")
     items = []
