@@ -59,7 +59,7 @@ Event sourcing, provenance semirings, why/where provenance, antichain absorption
 
 The scoped contribution is the ranked temporal future-winner problem after a fixed admitted cut: inherited expiry, shared revocation authority, immutable identities, the unique minimum exact candidate sublist, the two matching cardinality laws, their no-compression thresholds, and a coverage certificate that checks every retained, covered, or initially inactive candidate against independent evidence. Secure-log and transparency mechanisms answer commitment; provenance and freshness mechanisms answer parts of eligibility; this work addresses answer completeness under future eligibility loss. These layers are complementary rather than substitutes.
 
-The manuscript bibliography contains 24 cited scholarly references. The supplied historical calibration record describes 12 full papers from the target journal, five full adjacent-venue papers, and five foundational/influential papers; the last group deliberately overlaps the first two where a paper is both closest and field-defining. That record is not a new full-text audit of every citation in the current repair. Selected primary-source checks support proportional positioning, not an exhaustive literature review or guaranteed novelty against every unpublished result.
+The manuscript cites the relevant provenance, authenticated-data, temporal-query and security foundations. Its comparison concerns the stated future-winner problem and representation, rather than a claim to replace those foundations.
 
 ## External-use holds
 
