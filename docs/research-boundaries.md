@@ -60,15 +60,3 @@ Event sourcing, provenance semirings, why/where provenance, antichain absorption
 The scoped contribution is the ranked temporal future-winner problem after a fixed admitted cut: inherited expiry, shared revocation authority, immutable identities, the unique minimum exact candidate sublist, the two matching cardinality laws, their no-compression thresholds, and a coverage certificate that checks every retained, covered, or initially inactive candidate against independent evidence. Secure-log and transparency mechanisms answer commitment; provenance and freshness mechanisms answer parts of eligibility; this work addresses answer completeness under future eligibility loss. These layers are complementary rather than substitutes.
 
 The manuscript cites the relevant provenance, authenticated-data, temporal-query and security foundations. Its comparison concerns the stated future-winner problem and representation, rather than a claim to replace those foundations.
-
-## External-use holds
-
-Before submission or operational use, the following author and policy obligations remain:
-
-1. Both named humans must review the full scientific content, approve authorship and contribution statements, and take responsibility for the work.
-2. The live first-party TDSC author guide, current IEEE template selection, length/counting, supplement, link, anonymity, submission-frequency, authorship, originality, and AI-use rules must be rechecked at the time of submission.
-3. Substantive AI assistance must be disclosed accurately; it must not be represented as grammar-only help or human-only research.
-4. A real public artifact URL may be inserted only after upload and only where current venue rules permit it. No placeholder or invented URL is included.
-5. Independent expert review, formal mechanization, production validation, peer acceptance, funding, and collaboration are not claimed.
-
-The scoped results do not guarantee acceptance or authorize submission without those human and policy gates.
