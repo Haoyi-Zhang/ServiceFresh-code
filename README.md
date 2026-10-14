@@ -24,6 +24,8 @@ min(M, D * sum(binom(u,k), k=0..min(b,u))).
 
 This bound is also attained. Variable-universe membership is NP-complete; the implementation's exact helper is intentionally bounded to 20 relevant tokens.
 
+Support masks are nonnegative integers. The budget helper extracts the actual set-bit positions in increasing order, so sparse token labels do not require visiting every unused position. Exact subset search and its 20-relevant-token bound are unchanged.
+
 The certificate API implements unrestricted revocation only. The budgeted helper does not issue a budget-bound certificate or enforce cumulative consumption. Extremal fixtures use the natural origin `q0=0` and require positive deadlines so their last-live-time witnesses are admissible.
 
 These are minimum **original-candidate sublist** results, not minimum-bit or minimum-circuit results. They do not promise compression. At 2,000 private-scope candidates, every candidate remains necessary and certificate bootstrap costs more than building the matched full cache.

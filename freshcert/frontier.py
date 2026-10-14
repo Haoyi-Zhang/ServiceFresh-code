@@ -42,8 +42,14 @@ def budget_witness(x: Candidate, candidates: Iterable[Candidate], budget: int) -
     """
     if type(budget) is not int or budget < 0:
         raise ValueError('budget must be a nonnegative integer')
-    edges = [y.support & ~x.support for y in candidates
-             if y.rank > x.rank and y.deadline >= x.deadline]
+    if type(x.support) is not int or x.support < 0:
+        raise ValueError('support masks must be nonnegative integers')
+    edges = []
+    for y in candidates:
+        if y.rank > x.rank and y.deadline >= x.deadline:
+            if type(y.support) is not int or y.support < 0:
+                raise ValueError('support masks must be nonnegative integers')
+            edges.append(y.support & ~x.support)
     if any(edge == 0 for edge in edges):
         return None
     if not edges:
@@ -53,7 +59,12 @@ def budget_witness(x: Candidate, candidates: Iterable[Candidate], budget: int) -
         universe |= edge
     if universe.bit_count() > 20:
         raise ValueError('bounded exact search is limited to 20 tokens')
-    bits = [1 << i for i in range(universe.bit_length()) if universe >> i & 1]
+    bits = []
+    remaining = universe
+    while remaining:
+        bit = remaining & -remaining
+        bits.append(bit)
+        remaining ^= bit
     for size in range(min(budget, len(bits)) + 1):
         for chosen in combinations(bits, size):
             hit = sum(chosen)
