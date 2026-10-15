@@ -47,7 +47,7 @@ def generate(source: Path, out: Path) -> None:
         z = totals[k]
         tex.append(f"{label} & {z['id_errors']:,} & {z['value_errors']:,} & {z['unsafe_returns']:,}\\\\")
     tex += ['\\bottomrule', '\\end{tabular}']
-    (out/'method-errors.tex').write_text('\n'.join(tex)+'\n')
+    (out/'method-errors.tex').write_text('\n'.join(tex)+'\n', encoding='utf-8', newline='\n')
 
     traces = [r for i in range(6) for r in rows(source/f'traces-{i:02d}.csv')]
     regimes = ['mixed', 'and-dependency', 'alias-chain', 'replay-order',
@@ -70,7 +70,7 @@ def generate(source: Path, out: Path) -> None:
     for z, label in zip(aggregation, labels):
         tex.append(f"{label} & {z['eligible']:,} & {z['frontier']:,} & {z['median_ratio']:.3f}\\\\")
     tex += ['\\bottomrule', '\\end{tabular}']
-    (out/'regimes.tex').write_text('\n'.join(tex)+'\n')
+    (out/'regimes.tex').write_text('\n'.join(tex)+'\n', encoding='utf-8', newline='\n')
 
     scale = rows(source/'scaling-summary.csv')
     # Reconcile summary medians with every raw batch, not an independently typed table.
@@ -103,7 +103,7 @@ def generate(source: Path, out: Path) -> None:
     for z in scale_data:
         tex.append(f"{z['regime'].capitalize()} / {z['records']:,} & {z['frontier']:,} & {z['producer_ms']:.2f} & {z['checker_ms']:.2f} & {z['full_setup_ms']:.2f} & {z['full_us']:.2f} & {z['verified_us']:.2f}\\\\")
     tex += ['\\bottomrule', '\\end{tabular}']
-    (out/'scaling.tex').write_text('\n'.join(tex)+'\n')
+    (out/'scaling.tex').write_text('\n'.join(tex)+'\n', encoding='utf-8', newline='\n')
     print(json.dumps(dict(status='passed', trace_rows=len(answers),
           trace_queries=len(traces), scale_cases=len(scale_data),
           eligible=sum(z['eligible'] for z in aggregation),

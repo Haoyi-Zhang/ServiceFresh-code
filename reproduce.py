@@ -3,7 +3,7 @@
 
 Examples:
   python reproduce.py --all --out results/reproduced --compare results/reference
-  python reproduce.py --phase tiny --out results/reference
+  python reproduce.py --phase tiny --out results/local-run
 """
 import argparse
 import csv
